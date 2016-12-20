@@ -1,11 +1,14 @@
----
-:backtrace: false
-:bulk_threshold: 1000
-:sources:
-- http://gems.rubyforge.org/
-:update_sources: true
-:verbose: true
-update: "--env-shebang"
+# http://docs.rubygems.org/read/chapter/11
+--- 
+gem: --no-ri --no-rdoc
 benchmark: false
-install: "--env-shebang"
-gem: -n/usr/local/bin
+verbose: true
+update_sources: true
+sources: 
+- http://rubygems.org/
+- http://gems.rubyforge.org/
+backtrace: true
+bulk_threshold: 1000
+
+# HTTP Proxy options
+# http-proxy: http://example.com:80

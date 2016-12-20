@@ -369,25 +369,25 @@ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist > /d
 running "Set standby delay to 24 hours (default is 1 hour)"
 sudo pmset -a standbydelay 86400;ok
 
-running "Disable the sound effects on boot"
-sudo nvram SystemAudioVolume=" ";ok
+#running "Disable the sound effects on boot"
+#sudo nvram SystemAudioVolume=" ";ok
 
 running "Menu bar: disable transparency"
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
 
-running "Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons"
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-  defaults write "${domain}" dontAutoLoad -array \
-    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-    "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-    "/System/Library/CoreServices/Menu Extras/User.menu"
-done;
-defaults write com.apple.systemuiserver menuExtras -array \
-  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-  "/System/Library/CoreServices/Menu Extras/Clock.menu"
-ok
+#running "Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons"
+#for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#  defaults write "${domain}" dontAutoLoad -array \
+#    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#    "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#    "/System/Library/CoreServices/Menu Extras/User.menu"
+#done;
+#defaults write com.apple.systemuiserver menuExtras -array \
+#  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Clock.menu"
+#ok
 
 running "Set highlight color to green"
 defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
@@ -496,7 +496,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10;ok
 
 running "Set language and text formats (english/US)"
 defaults write NSGlobalDomain AppleLanguages -array "en"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true;ok
 
@@ -815,9 +815,12 @@ running "Installing the Solarized Light theme for iTerm (opening file)"
 open "./configs/Solarized Light.itermcolors";ok
 running "Installing the Patched Solarized Dark theme for iTerm (opening file)"
 open "./configs/Solarized Dark Patch.itermcolors";ok
+running "Installing the Dracula theme for iTerm (opening file)"
+open "./configs/Dracula.itermcolors";ok
 
-running "Don’t display the annoying prompt when quitting iTerm"
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
+
+#running "Don’t display the annoying prompt when quitting iTerm"
+#defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
 running "hide tab title bars"
 defaults write com.googlecode.iterm2 HideTab -bool true;ok
 running "set system-wide hotkey to show/hide iterm with ^\`"

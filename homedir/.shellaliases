@@ -90,3 +90,18 @@ alias spoton="sudo mdutil -a -i on"
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; mas upgrade; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
 alias vtop="vtop --theme wizard"
+
+# These are mine (hbokh, 20161220):
+alias v='gls -altrF --color'
+alias mp='mplayer -fs -cache 8192'
+alias dmesg='sudo dmesg'
+alias vssh='vagrant ssh'
+alias brall='brew -v update && brew upgrade && brew cleanup && brew prune && rm -rf ~/Library/Caches/Homebrew/*'
+alias vm='ssh vagrant@127.0.0.1 -p 2222'
+alias d='docker'
+alias dl='docker ps -l -q'
+alias dockerkillall='docker kill $(docker ps -q)'
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+alias dockerclean='dockercleanc || true && dockercleani'
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
