@@ -21,6 +21,7 @@ module.exports = {
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
     'gnu-sed --default-names',
     'gnu-tar',
+    'go',
     // better, more recent grep
     'homebrew/dupes/grep',
     // https://github.com/jkbrzt/httpie
@@ -49,6 +50,7 @@ module.exports = {
     'rpl',
     // better/more recent version of screen
     'homebrew/dupes/screen',
+    'stormssh',
     'tmux',
     'tree',
     //'ttyrec',
@@ -70,7 +72,7 @@ module.exports = {
     //'evernote',
     'firefox',
     'google-chrome',
-    'gpgtools',
+    //'gpgtools',
     //'ireadfast',
     'iterm2',
     //'little-snitch',

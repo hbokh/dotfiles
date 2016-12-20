@@ -1,3 +1,21 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible	" be iMproved, required
+filetype off		" required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'dracula/vim'
+
+
 set background=dark
 set t_Co=256 		" enable 256 colors, must appear before any syntax and color settings
 
@@ -33,10 +51,10 @@ set fileencoding=utf8
 syntax enable 		" turn on syntax highlighting
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
+"color dracula 		" set by Vundle
 "let g:molokai_original = 1
 let g:rehash256 = 1
 "colorscheme molokai
-"color dracula
 
 if exists('$TMUX')
   set term=screen-256color
