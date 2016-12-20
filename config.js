@@ -79,7 +79,7 @@ module.exports = {
     //'micro-snitch',
     //'macvim',
     'sequel-pro',
-    'sizeup',
+    //'sizeup',
     //'sketchup',
     'slack',
     'spotify',
