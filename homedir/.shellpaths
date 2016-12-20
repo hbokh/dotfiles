@@ -8,6 +8,9 @@ export PATH=/usr/local/bin:$PATH
 
 # GO
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOROOT=/usr/local/Cellar/go/1.7.4_1/libexec
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=~/develop/gocode
 
 # The next line updates PATH for the Google Cloud SDK.
 #source "/Users/$(whoami)/Downloads/google-cloud-sdk/path.zsh.inc"

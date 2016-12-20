@@ -27,3 +27,49 @@ export MYDEVAPPS=/Applications/Dev
 #########################################################################
 export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
 export NVM_DIR=~/.nvm
+
+#########################################################################
+# My settings (hbokh, 20161220)
+#########################################################################
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;37;41'
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin
+export PATH=$HOME/bin:$PATH
+
+export CLICOLOR=1
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+
+export TERM=xterm-256color
+
+# SSH Keychain setup ##################################################
+#/usr/local/bin/keychain --noask ~/.ssh/identity ~/.ssh/id_dsa ~/.ssh/id_rsa
+/usr/local/bin/keychain ~/.ssh/id_rsa_legacy ~/.ssh/id_ed25519 ~/.ssh/id_rsa
+# Only use RSA:
+#/usr/local/bin/keychain ~/.ssh/id_rsa
+source ~/.keychain/`hostname`-sh
+
+# Ruby RVM ############################################################
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+#rvm system
+
+# Homebrew ############################################################
+export HOMEBREW_GITHUB_API_TOKEN=23576f24df8ce6e8cdfef70f804bbea945070d8a
+export HOMEBREW_TEMP="/usr/local/tmp"
+export HOMEBREW_NO_ANALYTICS=1
+
+# Ansible #############################################################
+export ANSIBLE_NOCOWS=1
+
+# Virtual envs ########################################################
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+
+# m-cli ###############################################################
+export PATH=$PATH:/usr/local/m-cli
+
+# debops ##############################################################
+#export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+#export PYTHONPATH="/usr/local/Cellar/ansible/2.2.0.0/libexec/lib/python2.7/site-packages:/usr/local/Cellar/ansible/2.2.0.0/libexec/vendor/lib/python2.7/site-packages:$PYTHONPATH"
