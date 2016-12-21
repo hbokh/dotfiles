@@ -66,10 +66,7 @@ module.exports = {
     //'amazon-cloud-drive',
     'atom',
     //'box-sync',
-    //'comicbooklover',
     //'diffmerge',
-    //'dropbox',
-    //'evernote',
     'firefox',
     'google-chrome',
     //'gpgtools',
@@ -79,7 +76,6 @@ module.exports = {
     //'micro-snitch',
     //'macvim',
     'sequel-pro',
-    //'sizeup',
     //'sketchup',
     'slack',
     'spotify',
@@ -92,7 +88,9 @@ module.exports = {
     'xquartz'
   ],
   gem: [
-    'git-up'
+    // If you update to Git 2.9 or later, you can use this alias instead of installing git-up:
+    // git config --global alias.up 'pull --rebase --autostash'
+    //'git-up'
   ],
   npm: [
     //'antic',

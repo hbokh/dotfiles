@@ -85,26 +85,25 @@ if [[ $? = 0 ]]; then
   if [[ $response =~ ^(no|n|N) ]];then
     read -r -p "What is your email? " email
     if [[ ! $email ]];then
-      error "you must provide an email to configure .gitconfig"
+      error "You must provide an email to configure .gitconfig"
       exit 1
     fi
   fi
 
-
-  running "replacing items in .gitconfig with your info ($COL_YELLOW$fullname, $email, $githubuser$COL_RESET)"
+  running "Replacing items in .gitconfig with your info ($COL_YELLOW$fullname, $email, $githubuser$COL_RESET)"
 
   # test if gnu-sed or MacOS sed
 
   sed -i "s/GITHUBFULLNAME/$firstname $lastname/" ./homedir/.gitconfig > /dev/null 2>&1 | true
   if [[ ${PIPESTATUS[0]} != 0 ]]; then
     echo
-    running "looks like you are using MacOS sed rather than gnu-sed, accommodating"
+    running "Looks like you are using macOS sed rather than gnu-sed, accommodating"
     sed -i '' "s/GITHUBFULLNAME/$firstname $lastname/" ./homedir/.gitconfig;
     sed -i '' 's/GITHUBEMAIL/'$email'/' ./homedir/.gitconfig;
     sed -i '' 's/GITHUBUSER/'$githubuser'/' ./homedir/.gitconfig;
   else
     echo
-    bot "looks like you are already using gnu-sed. woot!"
+    bot "Looks like you are already using gnu-sed. woot!"
     sed -i 's/GITHUBEMAIL/'$email'/' ./homedir/.gitconfig;
     sed -i 's/GITHUBUSER/'$githubuser'/' ./homedir/.gitconfig;
   fi
@@ -115,7 +114,7 @@ MD5_OLDWP=$(md5 /System/Library/CoreServices/DefaultDesktop.jpg | awk '{print $4
 if [[ "$MD5_NEWWP" != "$MD5_OLDWP" ]]; then
   read -r -p "Do you want to use the project's custom desktop wallpaper? [Y|n] " response
   if [[ $response =~ ^(no|n|N) ]];then
-    echo "skipping...";
+    echo "Skipping...";
     ok
   else
     running "Set a custom wallpaper image"
@@ -135,37 +134,37 @@ fi
 # install homebrew (CLI Packages)
 #####
 
-running "checking homebrew install"
+running "Checking homebrew install"
 brew_bin=$(which brew) 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
-  action "installing homebrew"
+  action "Installing homebrew"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     if [[ $? != 0 ]]; then
-      error "unable to install homebrew, script $0 abort!"
+      error "Unable to install homebrew, script $0 abort!"
       exit 2
   fi
 else
   ok
   # Make sure we’re using the latest Homebrew
-  running "updating homebrew"
+  running "Updating homebrew"
   brew update
   ok
-  bot "before installing brew packages, we can upgrade any outdated packages."
+  bot "Before installing brew packages, we can upgrade any outdated packages."
   read -r -p "run brew upgrade? [y|N] " response
   if [[ $response =~ ^(y|yes|Y) ]];then
       # Upgrade any already-installed formulae
       action "upgrade brew packages..."
       brew upgrade
-      ok "brews updated..."
+      ok "Brews updated..."
   else
-      ok "skipped brew package upgrades.";
+      ok "Skipped brew package upgrades.";
   fi
 fi
 
 #####
 # install brew cask (UI Packages)
 #####
-running "checking brew-cask install"
+running "Checking brew-cask install"
 output=$(brew tap | grep cask)
 if [[ $? != 0 ]]; then
   action "installing brew-cask"
@@ -185,7 +184,7 @@ require_brew ruby
 # set zsh as the user login shell
 CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
 if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
-  bot "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
+  bot "Setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
   # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
   # chsh -s /usr/local/bin/zsh
   sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/zsh > /dev/null 2>&1
@@ -196,7 +195,7 @@ if [[ ! -d "./oh-my-zsh/custom/themes/powerlevel9k" ]]; then
   git clone https://github.com/bhilburn/powerlevel9k.git oh-my-zsh/custom/themes/powerlevel9k
 fi
 
-bot "creating symlinks for project dotfiles..."
+bot "Creating symlinks for project dotfiles..."
 pushd homedir > /dev/null 2>&1
 now=$(date +"%Y.%m.%d.%H.%M.%S")
 
@@ -223,7 +222,7 @@ popd > /dev/null 2>&1
 bot "Installing vim plugins"
 vim +PluginInstall +qall > /dev/null 2>&1
 
-bot "installing fonts"
+bot "Installing fonts"
 ./fonts/install.sh
 brew tap caskroom/fonts
 require_cask font-fontawesome
@@ -259,15 +258,15 @@ npm config set save-exact true
 # JSON files and inquirer prompts
 #####################################
 
-bot "installing npm tools needed to run this project..."
+bot "Installing npm tools needed to run this project..."
 npm install
 ok
 
-bot "installing packages from config.js..."
+bot "Installing packages from config.js..."
 node index.js
 ok
 
-running "cleanup homebrew"
+running "Cleanup homebrew"
 brew cleanup > /dev/null 2>&1
 ok
 
@@ -276,9 +275,10 @@ bot "Configuring General System UI/UX..."
 ###############################################################################
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
-running "closing any system preferences to prevent issues with automated changes"
+running "Closing any system preferences to prevent issues with automated changes"
 osascript -e 'tell application "System Preferences" to quit'
 ok
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
@@ -291,9 +291,11 @@ sudo pmset -a hibernatemode 0;ok
 
 running "Remove the sleep image file to save disk space"
 sudo rm -rf /Private/var/vm/sleepimage;ok
+
 running "Create a zero-byte file instead"
 sudo touch /Private/var/vm/sleepimage;ok
-running "…and make sure it can’t be rewritten"
+
+running "... and make sure it can’t be rewritten"
 sudo chflags uchg /Private/var/vm/sleepimage;ok
 
 #running "Disable the sudden motion sensor as it’s not useful for SSDs"
@@ -359,10 +361,10 @@ sudo chflags uchg /Private/var/vm/sleepimage;ok
 ################################################
 bot "Standard System Changes"
 ################################################
-running "always boot in verbose mode (not MacOS GUI mode)"
+running "Always boot in verbose mode (not MacOS GUI mode)"
 sudo nvram boot-args="-v";ok
 
-running "allow 'locate' command"
+running "Allow 'locate' command"
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist > /dev/null 2>&1;ok
 
 running "Set standby delay to 24 hours (default is 1 hour)"
@@ -446,15 +448,14 @@ sudo systemsetup -setcomputersleep Off > /dev/null;ok
 running "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
 
-running "Disable Notification Center and remove the menu bar icon"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
+#running "Disable Notification Center and remove the menu bar icon"
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
 
 running "Disable smart quotes as they’re annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
 
 running "Disable smart dashes as they’re annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
-
 
 ###############################################################################
 bot "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
@@ -489,9 +490,9 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true;ok
 running "Disable press-and-hold for keys in favor of key repeat"
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false;ok
 
-running "Set a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10;ok
+#running "Set a blazingly fast keyboard repeat rate"
+#defaults write NSGlobalDomain KeyRepeat -int 1
+#defaults write NSGlobalDomain InitialKeyRepeat -int 10;ok
 
 running "Set language and text formats (english/US)"
 defaults write NSGlobalDomain AppleLanguages -array "en"
@@ -601,7 +602,6 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
 running "Show the ~/Library folder"
 chflags nohidden ~/Library;ok
 
-
 running "Expand the following File Info panes: “General”, “Open with”, and “Sharing & Permissions”"
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
   General -bool true \
@@ -643,14 +643,15 @@ defaults write com.apple.dock expose-group-by-app -bool false;ok
 running "Disable Dashboard"
 defaults write com.apple.dashboard mcx-disabled -bool true;ok
 
-running "Don’t show Dashboard as a Space"
-defaults write com.apple.dock dashboard-in-overlay -bool true;ok
+#running "Don’t show Dashboard as a Space"
+#defaults write com.apple.dock dashboard-in-overlay -bool true;ok
 
 running "Don’t automatically rearrange Spaces based on most recent use"
 defaults write com.apple.dock mru-spaces -bool false;ok
 
 running "Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0;ok
+
 running "Remove the animation when hiding/showing the Dock"
 defaults write com.apple.dock autohide-time-modifier -float 0;ok
 
@@ -682,9 +683,11 @@ bot "Configuring Hot Corners"
 running "Top left screen corner → Mission Control"
 defaults write com.apple.dock wvous-tl-corner -int 2
 defaults write com.apple.dock wvous-tl-modifier -int 0;ok
+
 running "Top right screen corner → Desktop"
 defaults write com.apple.dock wvous-tr-corner -int 4
 defaults write com.apple.dock wvous-tr-modifier -int 0;ok
+
 running "Bottom right screen corner → Start screen saver"
 defaults write com.apple.dock wvous-br-corner -int 5
 defaults write com.apple.dock wvous-br-modifier -int 0;ok
@@ -764,6 +767,7 @@ bot "Spotlight"
 running "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed"
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes";ok
+
 running "Change indexing order and disable some file types from being indexed"
 defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "APPLICATIONS";}' \
@@ -782,10 +786,13 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
   '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
   '{"enabled" = 0;"name" = "SOURCE";}';ok
+
 running "Load new settings before rebuilding the index"
 killall mds > /dev/null 2>&1;ok
+
 running "Make sure indexing is enabled for the main volume"
 sudo mdutil -i on / > /dev/null;ok
+
 #running "Rebuild the index from scratch"
 #sudo mdutil -E / > /dev/null;ok
 
@@ -806,39 +813,49 @@ bot "Terminal & iTerm2"
 # 	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
 # fi;
 
-#running "Enable “focus follows mouse” for Terminal.app and all X11 apps"
+running "Enable “focus follows mouse” for Terminal.app and all X11 apps"
 # i.e. hover over a window and start `typing in it without clicking first
 defaults write com.apple.terminal FocusFollowsMouse -bool true
-#defaults write org.x.X11 wm_ffm -bool true;ok
+defaults write org.x.X11 wm_ffm -bool true;ok
+
 running "Installing the Solarized Light theme for iTerm (opening file)"
 open "./configs/Solarized Light.itermcolors";ok
+
 running "Installing the Patched Solarized Dark theme for iTerm (opening file)"
 open "./configs/Solarized Dark Patch.itermcolors";ok
+
 running "Installing the Dracula theme for iTerm (opening file)"
 open "./configs/Dracula.itermcolors";ok
 
-
 #running "Don’t display the annoying prompt when quitting iTerm"
 #defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
-running "hide tab title bars"
+
+running "Hide tab title bars"
 defaults write com.googlecode.iterm2 HideTab -bool true;ok
-running "set system-wide hotkey to show/hide iterm with ^\`"
+
+running "Set system-wide hotkey to show/hide iterm with ^\`"
 defaults write com.googlecode.iterm2 Hotkey -bool true;ok
-running "hide pane titles in split panes"
+
+running "Hide pane titles in split panes"
 defaults write com.googlecode.iterm2 ShowPaneTitles -bool false;ok
-running "animate split-terminal dimming"
+
+running "Animate split-terminal dimming"
 defaults write com.googlecode.iterm2 AnimateDimming -bool true;ok
+
 defaults write com.googlecode.iterm2 HotkeyChar -int 96;
 defaults write com.googlecode.iterm2 HotkeyCode -int 50;
 defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1;
 defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
+
 running "Make iTerm2 load new tabs in the same directory"
 /usr/libexec/PlistBuddy -c "set \"New Bookmarks\":0:\"Custom Directory\" Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
-running "setting fonts"
+
+running "Setting fonts"
 defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
 defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
 ok
-running "reading iterm settings"
+
+running "Reading iterm settings"
 defaults read -app iTerm > /dev/null 2>&1;
 ok
 
@@ -881,6 +898,7 @@ defaults write com.apple.dashboard devmode -bool true;ok
 
 running "Use plain text mode for new TextEdit documents"
 defaults write com.apple.TextEdit RichText -int 0;ok
+
 running "Open and save files as UTF-8 in TextEdit"
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4;ok
@@ -913,26 +931,26 @@ running "Disable continuous spell checking"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
 
 ###############################################################################
-bot "SizeUp.app"
+#bot "SizeUp.app"
 ###############################################################################
 
-running "Start SizeUp at login"
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
+#running "Start SizeUp at login"
+#defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
 
-running "Don’t show the preferences window on next start"
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
+#running "Don’t show the preferences window on next start"
+#defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
 
-killall cfprefsd
+#killall cfprefsd
 
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
-bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
+bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)..."
+
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
   "iCal" "Terminal"; do
   killall "${app}" > /dev/null 2>&1
 done
-
 
 bot "Woot! All done. Kill this terminal and launch iTerm"
