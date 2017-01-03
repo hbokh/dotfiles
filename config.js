@@ -17,11 +17,16 @@ module.exports = {
     //'gifsicle',
     'git-flow',
     'gnupg',
+    'gnu-indent --default-names',
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
     'gnu-sed --default-names',
-    'gnu-tar',
+    'gnu-tar --default-names',
+    'gnu-which --default-names',
+    'gnutls --default-names',
+    'grep --default-names',
     'go',
+    'gzip',
     // better, more recent grep
     'homebrew/dupes/grep',
     // https://github.com/jkbrzt/httpie
@@ -57,6 +62,7 @@ module.exports = {
     // better, more recent vim
     'vim --override-system-vi',
     'watch',
+    'wdiff --with-gettex'
     // Install wget with IRI support
     'wget --enable-iri'
   ],
