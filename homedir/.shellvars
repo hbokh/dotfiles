@@ -44,7 +44,7 @@ export TERM=xterm-256color
 
 # SSH Keychain setup ##################################################
 #/usr/local/bin/keychain --noask ~/.ssh/identity ~/.ssh/id_dsa ~/.ssh/id_rsa
-/usr/local/bin/keychain ~/.ssh/id_rsa_legacy ~/.ssh/id_ed25519 ~/.ssh/id_rsa
+/usr/local/bin/keychain ~/.ssh/id_ed25519 ~/.ssh/id_rsa
 # Only use RSA:
 #/usr/local/bin/keychain ~/.ssh/id_rsa
 source ~/.keychain/`hostname`-sh

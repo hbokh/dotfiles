@@ -30,6 +30,9 @@
   changed = green
   untracked = cyan
 
+[commit]
+  template = ~/.gitmessage
+
 [advice]
   statusHints = false
 
@@ -149,6 +152,7 @@
   cob = checkout -b
   sno = show --name-only
   logsimple = log --graph --abbrev-commit --pretty=oneline --all --decorate
+	up = pull --rebase --autostash
 [apply]
   whitespace = nowarn
 
