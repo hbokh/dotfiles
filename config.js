@@ -81,6 +81,21 @@ module.exports = {
     //'little-snitch',
     //'micro-snitch',
     //'macvim',
+    // Awesome Quick Look plugins
+    // https://github.com/sindresorhus/quick-look-plugins
+    'qlcolorcode',
+    'qlstephen',
+    'qlmarkdown',
+    'quicklook-json',
+    'qlprettypatch',
+    'quicklook-csv',
+    'betterzipql',
+    'qlimagesize',
+    'webpquicklook',
+    'suspicious-package',
+    'quicklookase',
+    'qlvideo',
+    // End QL-plugins 
     'sequel-pro',
     //'sketchup',
     'slack',
