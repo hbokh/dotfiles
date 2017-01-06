@@ -30,6 +30,7 @@ set showmatch		" Show matching braces.
 " Line wrapping on by default
 set wrap
 set linebreak
+set showbreak=>\ \ \
 set history=50 		" keep track of last commands
 set number ruler 	" show line numbers
 set incsearch 		" incremental searching on
