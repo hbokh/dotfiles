@@ -8,7 +8,7 @@ export PATH=/usr/local/bin:$PATH
 
 # GO
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOROOT=/usr/local/Cellar/go/1.7.4_1/libexec
+export GOROOT=/usr/local/Cellar/go/1.7.4_2/libexec
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=~/develop/gocode
 
@@ -17,3 +17,7 @@ export GOPATH=~/develop/gocode
 
 # The next line enables shell command completion for gcloud.
 #source "/Users/$(whoami)/Downloads/google-cloud-sdk/completion.zsh.inc"
+
+# GNU-ify Mac OS X
+# https://gist.github.com/NigoroJr/52cd11d9aaebe17823a7
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"

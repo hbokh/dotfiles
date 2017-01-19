@@ -3,16 +3,18 @@ module.exports = {
     // http://conqueringthecommandline.com/book/ack_ag
     'ack',
     'ag',
+    'binutils --default-names',
     // cmake is required to compile vim bundle YouCompleteMe
     'cmake',
     // Install GNU core utilities (those that come with OS X are outdated)
     // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-    'coreutils',
+    'coreutils --default-names',
+    'diffutils --default-names',
     'dos2unix',
     // Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-    'findutils',
+    'findutils --default-names',
     //'fortune',
-    'gawk',
+    'gawk --default-names',
     // http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
     //'gifsicle',
     'git-flow',

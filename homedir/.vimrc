@@ -19,6 +19,8 @@ Plugin 'dracula/vim'
 set background=dark
 set t_Co=256		" enable 256 colors, must appear before any syntax and color settings
 
+set mouse=a
+
 set modeline
 
 set shiftwidth=2 	" soft space = 2
