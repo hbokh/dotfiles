@@ -1,0 +1,78 @@
+# warning: GREP_OPTIONS is deprecated; please use an alias or script
+#export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;37;41'
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=$HOME/bin:$PATH
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+export CLICOLOR=1
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+
+export TERM=xterm-256color
+
+export HISTFILESIZE=1000000000
+export HISTSIZE=50000
+export SAVEHIST=10000
+
+# Ruby, Gems, RVM #####################################################
+export PATH=/usr/local/lib/ruby/gems/3.0.0/bin:/usr/local/opt/ruby/bin:$PATH
+
+# Homebrew ############################################################
+export HOMEBREW_GITHUB_API_TOKEN={{ gopass "tokens/GH_pat" }}         # Create date: 20211122
+export HOMEBREW_TEMP="/usr/local/tmp"
+export HOMEBREW_NO_ANALYTICS=1
+
+# Ansible #############################################################
+export ANSIBLE_NOCOWS=1
+
+# Go ##################################################################
+export GOVERSION=$(brew list --versions go | cut -c 4-12)
+export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION/libexec
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=~/develop/gocode
+
+# Virtual envs ########################################################
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+
+# coreutils ###########################################################
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# Python ##############################################################
+export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+
+# Kubernetes ##########################################################
+export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/k3s.yaml
+export KUBE_EDITOR="code -w"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+source <(kubectl completion zsh)
+
+# Flux ################################################################
+command -v flux >/dev/null && . <(flux completion zsh) && compdef _flux flux
+
+# ZSH-related #########################################################
+unsetopt nomatch
+# Fish shell-like syntax highlighting for Zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# iTerm2 integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+# Hetzner Cloud #######################################################
+#source <(hcloud completion zsh)
+
+# Bind some keys, navigate back / forward #############################
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
+
+# MacPorts ############################################################
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin
+
+# LibreSSL ############################################################
+export PATH="/usr/local/opt/libressl/bin:$PATH"
+
+# Other ###############################################################
+export DIRENV_WARN_TIMEOUT=60s

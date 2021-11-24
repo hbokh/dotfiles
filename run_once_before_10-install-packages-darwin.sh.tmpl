@@ -1,0 +1,16 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "curl"
+brew "git"
+brew "gopass"
+brew "pinentry-mac"
+brew "wget"
+brew "zsh-syntax-highlighting"
+cask "virtualbox"
+cask "virtualbox-extension-pack"
+EOF
+{{ end -}}

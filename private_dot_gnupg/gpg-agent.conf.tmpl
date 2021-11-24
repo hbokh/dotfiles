@@ -1,0 +1,6 @@
+#pinentry-program
+no-grab
+default-cache-ttl 1800
+{{- if eq .chezmoi.os "darwin" }}
+pinentry-program /usr/local/bin/pinentry-mac
+{{- end }}
