@@ -11,6 +11,10 @@ call vundle#begin()
 " Keep Plugin commands between vundle#begin/end.
 " Let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'syntastic'
+Plugin 'tabular'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'dracula/vim', { 'name': 'dracula' }
 
 " All of your Plugins must be added before the following line
@@ -74,3 +78,7 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_yaml_checkers = ['yamllint']
+
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
