@@ -1,23 +1,15 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible	" be iMproved, required
-filetype off		" required
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Keep Plugin commands between vundle#begin/end.
-" Let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'dracula/vim', { 'name': 'dracula' }
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'dracula/vim', { 'name': 'dracula' }
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
 set background=dark
@@ -60,9 +52,6 @@ let g:rehash256 = 1
 if exists('$TMUX')
   set term=screen-256color
 endif
-
-" vim-pathogen:
-execute pathogen#infect()
 
 " syntastic
 set statusline+=%#warningmsg#
