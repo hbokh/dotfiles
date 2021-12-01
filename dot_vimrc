@@ -9,8 +9,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " All of your Plugins must be added before the following line
-call plug#end()            " required
-filetype plugin indent on    " required
+call plug#end()			" required
+filetype plugin indent on	" required
+let g:plug_window = 'enew'	" Prevent vertical split
 
 set background=dark
 set t_Co=256 		" Enable 256 colors, must appear before any syntax and color settings
