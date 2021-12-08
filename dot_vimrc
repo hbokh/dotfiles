@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'saltstack/salt-vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " All of your Plugins must be added before the following line
@@ -16,24 +17,26 @@ let g:plug_window = 'enew'	" Prevent vertical split
 set background=dark
 set t_Co=256 		" Enable 256 colors, must appear before any syntax and color settings
 set modeline
+set tabstop=2
 set shiftwidth=2 	" Soft space = 2
+set expandtab
 set wildchar=9 		" Tab as completion character
 set virtualedit=block
 set clipboard+=unnamed	" Yanks go on clipboard instead.
-set showmatch		" Show matching braces.
-set wrap		" Line wrapping on by default
+set showmatch     " Show matching braces.
+set wrap          " Line wrapping on by default
 set linebreak
 set history=50 		" Keep track of last commands
 set number ruler 	" Show line numbers
 set incsearch 		" Incremental searching on
-set hlsearch 		" Highlight all matches
+set hlsearch        " Highlight all matches
 set smartcase
 set cursorline
 set selectmode=key
-set showtabline=2 	" Show always for console version
-set laststatus=2 	" Always show the statusline
-set wildmenu 		" Menu on statusbar for command autocomplete
-set encoding=utf8	" Default to UTF-8 encoding
+set showtabline=2   " Show always for console version
+set laststatus=2    " Always show the statusline
+set wildmenu        " Menu on statusbar for command autocomplete
+set encoding=utf8   " Default to UTF-8 encoding
 set fileencoding=utf8
 " Enable visible whitespace
 " set listchars=tab:»·,trail:·,precedes:<,extends:>
@@ -41,6 +44,7 @@ set fileencoding=utf8
 " set list
 
 syntax on 		" turn on syntax highlighting
+set nocompatible
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 colorscheme molokai
@@ -53,11 +57,6 @@ let g:rehash256 = 1
 if exists('$TMUX')
   set term=screen-256color
 endif
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
