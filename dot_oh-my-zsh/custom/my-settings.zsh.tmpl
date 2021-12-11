@@ -41,7 +41,7 @@ export PROJECT_HOME=$HOME/Projects
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Python ##############################################################
-export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+export PATH="/usr/local/opt/python@3.10/bin:$PATH"
 
 # Kubernetes ##########################################################
 export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/k3s.yaml
@@ -50,7 +50,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source <(kubectl completion zsh)
 
 # Flux ################################################################
-command -v flux >/dev/null && . <(flux completion zsh) && compdef _flux flux
+# command -v flux >/dev/null && . <(flux completion zsh) && compdef _flux flux
 
 # ZSH-related #########################################################
 unsetopt nomatch
