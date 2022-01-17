@@ -49,9 +49,6 @@ export KUBE_EDITOR="code -w"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source <(kubectl completion zsh)
 
-# Flux ################################################################
-# command -v flux >/dev/null && . <(flux completion zsh) && compdef _flux flux
-
 # ZSH-related #########################################################
 unsetopt nomatch
 # Fish shell-like syntax highlighting for Zsh
@@ -76,3 +73,6 @@ export PATH="/usr/local/opt/libressl/bin:$PATH"
 
 # Other ###############################################################
 export DIRENV_WARN_TIMEOUT=60s
+
+# Pipx ################################################################
+export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
