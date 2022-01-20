@@ -8,9 +8,25 @@ repos:
         args: ["detect", "--redact", "--verbose"]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.1.0
     hooks:
+      - id: check-added-large-files
+        #- id: check-ast
+        #- id: check-builtin-literals
+        #- id: check-docstring-first
+      - id: check-executables-have-shebangs
       - id: check-merge-conflict
+        #- id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+        #- id: check-xml
+      - id: check-yaml
+        #- id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-private-key
       - id: end-of-file-fixer
       - id: mixed-line-ending
+        #- id: pretty-format-json
       - id: trailing-whitespace
