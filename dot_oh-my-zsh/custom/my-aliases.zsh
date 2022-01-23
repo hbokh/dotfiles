@@ -3,8 +3,6 @@ alias brall='brew -v update && brew upgrade && brew cleanup && /bin/rm -rf ~/Lib
 alias dmesg='sudo dmesg'
 alias v='lsd -altrF'
 alias cat='bat'
-# show all the history stored.
-alias history='fc -l 1'
 
 # Docker
 alias d='docker'
