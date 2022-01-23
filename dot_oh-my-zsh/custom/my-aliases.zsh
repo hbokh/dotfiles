@@ -2,8 +2,9 @@
 alias brall='brew -v update && brew upgrade && brew cleanup && /bin/rm -rf ~/Library/Caches/Homebrew/*'
 alias dmesg='sudo dmesg'
 alias v='lsd -altrF'
-alias hist='history'
 alias cat='bat'
+# show all the history stored.
+alias history='fc -l 1'
 
 # Docker
 alias d='docker'
