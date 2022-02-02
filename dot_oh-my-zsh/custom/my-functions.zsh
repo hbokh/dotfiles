@@ -17,3 +17,17 @@ function kube-toggle() {
 
 zle -N kube-toggle
 bindkey '^]' kube-toggle  # ctrl-] to toggle kubecontext in powerlevel10k prompt
+
+## launchctl reload ###########################################################
+function lctl {
+    COMMAND=$1
+    PLIST_FILE=$2
+    if [ "$COMMAND" = "reload" ] && [ -n "$PLIST_FILE" ]
+      then
+        echo "reloading ${PLIST_FILE}.."
+        launchctl unload ${PLIST_FILE}
+        launchctl load ${PLIST_FILE}
+      else
+        echo "either command not specified or plist file is not defined"
+    fi
+}
