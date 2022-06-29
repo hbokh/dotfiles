@@ -2,7 +2,7 @@
 repos:
   # Check the repo URL for description of hooks
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.8.8
+    rev: v8.8.11
     hooks:
       - id: gitleaks
         args: ["detect", "--redact", "--verbose"]
