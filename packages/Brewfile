@@ -1,0 +1,8 @@
+brew "curl"
+brew "git"
+brew "gopass"
+brew "pinentry-mac"
+brew "wget"
+brew "zsh-syntax-highlighting"
+cask "virtualbox"
+cask "virtualbox-extension-pack"
