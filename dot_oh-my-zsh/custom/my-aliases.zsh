@@ -1,5 +1,5 @@
 #alias brall='brew -v update && brew upgrade && brew cleanup -s && rm -rf "$(brew --cache)"'
-alias brall='brew -v update && brew upgrade && brew cleanup && /bin/rm -rf ~/Library/Caches/Homebrew/*'
+alias brall='brew -v update && brew upgrade && brew cleanup -s && /bin/rm -rf ~/Library/Caches/Homebrew/*'
 alias dmesg='sudo dmesg'
 alias v='lsd -altrF'
 alias cat='bat'
@@ -15,15 +15,12 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 alias dockerkillall='docker kill $(docker ps -q)'
 alias dhub="browse https://hub.docker.com"
 
-alias mp='mplayer -fs -cache 8192'
 alias vm='ssh vagrant@127.0.0.1 -p 2222'
 alias vssh='vagrant ssh'
-#alias ssh="assh wrapper ssh"
 alias kitchen='bundle exec kitchen'
 
 # Suffix aliases
 alias -s {yml,json,md}=code
-
 alias browse="open -a /Applications/Firefox.app"
 
 # Kubernetes related

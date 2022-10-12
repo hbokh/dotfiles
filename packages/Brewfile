@@ -1,6 +1,9 @@
+
+brew "bat"
 brew "curl"
 brew "git"
 brew "gopass"
+brew "lsd"
 brew "pinentry-mac"
 brew "wget"
 brew "zsh-syntax-highlighting"
