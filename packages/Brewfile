@@ -1,4 +1,3 @@
-
 brew "bat"
 brew "curl"
 brew "git"
