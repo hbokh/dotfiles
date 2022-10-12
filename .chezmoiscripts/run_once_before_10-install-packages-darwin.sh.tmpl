@@ -1,9 +1,0 @@
-{{- if (eq .chezmoi.os "darwin") -}}
-#!/usr/bin/env bash
-
-set -eufo pipefail
-
-# Install packages
-brew bundle --no-lock --file={{ .chezmoi.sourceDir }}/packages/Brewfile
-
-{{- end }}
