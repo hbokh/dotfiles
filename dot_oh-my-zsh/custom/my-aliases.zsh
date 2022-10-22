@@ -26,3 +26,11 @@ alias browse="open -a /Applications/Firefox.app"
 # Kubernetes related
 alias k='kubectl'
 alias argocd='argocd --grpc-web'
+
+# History
+case ${HIST_STAMPS-} in
+  "mm/dd/yyyy") alias history='fc -fl 1' ;;
+  "dd.mm.yyyy") alias history='fc -El 1' ;;
+  "yyyy-mm-dd") alias history='fc -il 1' ;;
+  *) alias history='fc -l 1' ;;
+esac
