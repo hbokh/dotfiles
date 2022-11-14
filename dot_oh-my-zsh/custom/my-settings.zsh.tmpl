@@ -96,4 +96,4 @@ export DIRENV_WARN_TIMEOUT=60s
 export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
 
 # Tea #################################################################
-PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/Users/hbokh/Library/Application Support/tea/autocomplete.zsh"
+PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "{{ .chezmoi.homeDir }}/Library/Application Support/tea/autocomplete.zsh"
