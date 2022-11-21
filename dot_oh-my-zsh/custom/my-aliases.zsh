@@ -27,6 +27,13 @@ alias browse="open -a /Applications/Firefox.app"
 alias k='kubectl'
 alias argocd='argocd --grpc-web'
 
+function aws-exec {
+    AWS_ASSUME_ROLE_TTL=1h aws-vault --backend=keychain exec $1 -- "${@:2}"
+}
+
+alias ae='aws-exec'
+alias aws-login='ae hd aws-vault login'
+
 # History
 case ${HIST_STAMPS-} in
   "mm/dd/yyyy") alias history='fc -fl 1' ;;
