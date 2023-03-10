@@ -1,37 +1,11 @@
+{{ if eq .chezmoi.os "darwin" -}}
 alias brall='brew -v update && brew upgrade && brew cleanup --prune=all ; /bin/rm -rf ~/Library/Caches/Homebrew/*'
-alias dmesg='sudo dmesg'
 alias v='lsd -altrF'
 alias cat='bat'
-
-# Docker
-alias d='docker'
-alias dip='docker inspect --format '\''{{ .NetworkSettings.IPAddress }}'\'''
-alias dl='docker ps -l -q'
-alias doco='docker-compose'
-alias dockerclean='dockercleanc || true && dockercleani'
-alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
-alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
-alias dockerkillall='docker kill $(docker ps -q)'
-alias dhub="browse https://hub.docker.com"
-
-alias vm='ssh vagrant@127.0.0.1 -p 2222'
-alias vssh='vagrant ssh'
-alias kitchen='bundle exec kitchen'
 
 # Suffix aliases
 alias -s {yml,json,md}=code
 alias browse="open -a /Applications/Firefox.app"
-
-# Kubernetes related
-alias k='kubectl'
-alias argocd='argocd --grpc-web'
-
-function aws-exec {
-    AWS_ASSUME_ROLE_TTL=1h aws-vault --backend=keychain exec $1 -- "${@:2}"
-}
-
-alias ae='aws-exec'
-alias aws-login='ae hd aws-vault login'
 
 # History
 case ${HIST_STAMPS-} in
@@ -40,3 +14,34 @@ case ${HIST_STAMPS-} in
   "yyyy-mm-dd") alias history='fc -il 1' ;;
   *) alias history='fc -l 1' ;;
 esac
+{{ else if eq .chezmoi.os "linux" -}}
+alias v='ls -altrF --color'
+{{ end -}}
+
+# Generic aliases
+alias dmesg='sudo dmesg'
+alias vm='ssh vagrant@127.0.0.1 -p 2222'
+alias vssh='vagrant ssh'
+alias kitchen='bundle exec kitchen'
+
+# Docker
+alias d='docker'
+alias dl='docker ps -l -q'
+alias doco='docker-compose'
+alias dockerclean='dockercleanc || true && dockercleani'
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+alias dockerkillall='docker kill $(docker ps -q)'
+alias dhub="browse https://hub.docker.com"
+
+# Kubernetes related
+alias k='kubectl'
+alias argocd='argocd --grpc-web'
+
+# Work related
+function aws-exec {
+    AWS_ASSUME_ROLE_TTL=1h aws-vault --backend=keychain exec $1 -- "${@:2}"
+}
+
+alias ae='aws-exec'
+alias aws-login='ae hd aws-vault login'
