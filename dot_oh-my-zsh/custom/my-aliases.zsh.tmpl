@@ -18,11 +18,9 @@ esac
 alias v='ls -altrF --color'
 {{ end -}}
 
-# Generic aliases
 alias dmesg='sudo dmesg'
 alias vm='ssh vagrant@127.0.0.1 -p 2222'
 alias vssh='vagrant ssh'
-alias kitchen='bundle exec kitchen'
 
 # Docker
 alias d='docker'
@@ -34,7 +32,7 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 alias dockerkillall='docker kill $(docker ps -q)'
 alias dhub="browse https://hub.docker.com"
 
-# Kubernetes related
+# Kubernetes
 alias k='kubectl'
 alias argocd='argocd --grpc-web'
 
@@ -45,3 +43,4 @@ function aws-exec {
 
 alias ae='aws-exec'
 alias aws-login='ae hd aws-vault login'
+alias kitchen='bundle exec kitchen'
