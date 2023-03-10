@@ -1,4 +1,24 @@
+{{/* boolean feature tags */}}
+{{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $flarm := false -}}{{/* true if this machine is used for FLARM */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
+
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+
+{{- $email := "hbokhoven@gmail.com" -}}
+
+[data]
+    docker = {{ $docker }}
+    ephemeral = {{ $ephemeral }}
+    email = {{ $email | quote }}
+    flarm = {{ $flarm }}
+    headless = {{ $headless }}
+    hostname = {{ $hostname | quote }}
+    personal = {{ $personal }}
+    osid = {{ $osID | quote }}
