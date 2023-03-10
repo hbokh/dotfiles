@@ -1,5 +1,4 @@
-#alias brall='brew -v update && brew upgrade && brew cleanup -s && rm -rf "$(brew --cache)"'
-alias brall='brew -v update && brew upgrade && brew cleanup -s && /bin/rm -rf ~/Library/Caches/Homebrew/*'
+alias brall='brew -v update && brew upgrade && brew cleanup --prune=all ; /bin/rm -rf ~/Library/Caches/Homebrew/*'
 alias dmesg='sudo dmesg'
 alias v='lsd -altrF'
 alias cat='bat'
