@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" "linux-ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" -}}
 
 {{ $packages := list
      "curl"
@@ -8,7 +8,6 @@
      "jq"
      "vim"
      "silversearcher-ag"
-     "units"
      "virtualenvwrapper"
      "zsh" -}}
 {{ $classicSnaps := list -}}

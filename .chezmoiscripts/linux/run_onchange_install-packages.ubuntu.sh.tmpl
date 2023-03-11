@@ -1,0 +1,14 @@
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{- if eq .chezmoi.osRelease.id "ubuntu" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Aptfile hash: {{ include "packages/Aptfile" | sha256sum }}
+
+# Install packages
+sudo apt-get install -y apt-transport-https
+sudo apt-get update
+cat {{ .chezmoi.sourceDir }}/packages/Aptfile | xargs sudo apt-get install -y
+
+{{- end -}}
+{{- end }}

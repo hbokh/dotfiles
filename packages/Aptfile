@@ -1,0 +1,11 @@
+bat
+curl
+direnv
+fd-find
+git
+htop
+jq
+python3-venv
+ufw
+unp
+zsh
