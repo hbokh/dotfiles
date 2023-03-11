@@ -1,0 +1,35 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+# Reference:
+# https://github.com/atomantic/dotfiles/blob/main/install.sh
+
+# Finder: show hidden files by default
+defaults write com.apple.Finder AppleShowAllFiles -bool true
+
+# Finder: set window title to full POSIX file path of current folder
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Set highlight color to green
+defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
+
+# Bottom right screen corner → Start screen saver
+defaults write com.apple.dock wvous-br-corner -int 5
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Set Zsh as default shell
+if [ "$SHELL" != "/usr/local/bin/zsh" ]
+then
+  chsh -s /usr/local/bin/zsh hbokh
+fi
+
+{{ end -}}
