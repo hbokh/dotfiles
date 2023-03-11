@@ -1,19 +1,15 @@
-# warning: GREP_OPTIONS is deprecated; please use an alias or script
-#export GREP_OPTIONS='--color=auto'
+# Env #################################################################
 export GREP_COLOR='1;37;41'
-
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export PATH=$HOME/bin:$PATH
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-
 export TERM=xterm-256color
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# History
+# History  ############################################################
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
@@ -32,16 +28,15 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-# Ruby, Gems, RVM #####################################################
-export PATH=/usr/local/lib/ruby/gems/3.1.0/bin:/usr/local/opt/ruby/bin:$PATH
+# Ansible #############################################################
+export ANSIBLE_NOCOWS=1
+
+{{ if eq .chezmoi.os "darwin" -}}
 
 # Homebrew ############################################################
 export HOMEBREW_GITHUB_API_TOKEN={{ gopass "tokens/GH_pat" }}         # This token expires on Sun, Nov 26 2023.
 export HOMEBREW_TEMP="/usr/local/tmp"
 export HOMEBREW_NO_ANALYTICS=1
-
-# Ansible #############################################################
-export ANSIBLE_NOCOWS=1
 
 # Go ##################################################################
 export GOVERSION=$(brew list --versions go | cut -c 4-12)
@@ -55,11 +50,19 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 source virtualenvwrapper.sh
 
+# Ruby, Gems, RVM #####################################################
+export PATH=/usr/local/lib/ruby/gems/3.2.0/bin:/usr/local/opt/ruby/bin:$PATH
+
 # coreutils ###########################################################
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-# Python ##############################################################
-export PATH="/usr/local/opt/python@3.10/bin:$PATH"
+# Python 3 ############################################################
+export PATH="/usr/local/opt/python@3/bin:$PATH"
+
+# OpenSSL #############################################################
+export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+
+{{ end -}}
 
 # Kubernetes ##########################################################
 export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/k3s.yaml
@@ -70,12 +73,9 @@ source <(kubectl completion zsh)
 # ZSH-related #########################################################
 unsetopt nomatch
 # Fish shell-like syntax highlighting for Zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-
-# Hetzner Cloud #######################################################
-#source <(hcloud completion zsh)
 
 # Bind some keys, navigate back / forward #############################
 bindkey "[D" backward-word
@@ -83,17 +83,8 @@ bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
-# MacPorts ############################################################
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin
-
-# OpenSSL #############################################################
-export PATH="/usr/local/opt/openssl@3/bin:$PATH"
-
 # Other ###############################################################
 export DIRENV_WARN_TIMEOUT=60s
 
 # Pipx ################################################################
 export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
-
-# Tea #################################################################
-PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "{{ .chezmoi.homeDir }}/Library/Application Support/tea/autocomplete.zsh"
