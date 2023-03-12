@@ -1,0 +1,17 @@
+{{ if eq .osid "linux-centos" -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+{{ if eq .chezmoi.osRelease.versionID "7" }}
+# CentOS7 comes with git 1.8 & Chezmoi needs git 2.
+# https://www.endpointdev.com/blog/2021/12/installing-git-2-on-centos-7/
+
+sudo yum -q -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm || true
+sudo yum -q -y install git
+
+# zsh 5.1 needed by Powerlevel10k
+sudo yum -q -y install http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/zsh-5.1-1.gf.el7.x86_64.rpm || true
+{{ end }}
+
+{{ end -}}

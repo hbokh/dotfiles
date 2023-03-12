@@ -1,10 +1,8 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" -}}
-
+{{ if eq .osid "linux-centos" -}}
 #!/usr/bin/env bash
 
 set -eufo pipefail
 
-sudo apt install git -y
 cd {{ .chezmoi.homeDir }}
 git clone https://github.com/ohmyzsh/ohmyzsh.git .oh-my-zsh/
 
