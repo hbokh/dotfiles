@@ -1,7 +1,6 @@
 {{/* boolean feature tags */}}
 {{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
-{{- $flarm := false -}}{{/* true if this machine is used for FLARM */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- "" -}}
@@ -15,7 +14,7 @@
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{-   if eq $computerName "Henks MacBook Pro" -}}
+{{-   if eq $computerName "Henk's MacBook Pro" -}}
 {{-     $hostname = "henks-mbp" -}}
 {{-   else -}}
 {{-     $hostname = $computerName -}}
@@ -28,7 +27,6 @@
     docker = {{ $docker }}
     ephemeral = {{ $ephemeral }}
     email = {{ $email | quote }}
-    flarm = {{ $flarm }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
