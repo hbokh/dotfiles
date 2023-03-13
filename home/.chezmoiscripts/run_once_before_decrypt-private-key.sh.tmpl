@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 
-set -eufo pipefail
-
-{{ if eq .chezmoi.os "linux" }}
-if ! command -v age &> /dev/null; then
-    echo "Installing age encryption ..."
-    cd /tmp
-    VERSION=1.1.1
-    wget -q https://github.com/FiloSottile/age/releases/download/v"$VERSION"/age-v"$VERSION"-linux-amd64.tar.gz
-    tar zxf age-v"$VERSION"-linux-amd64.tar.gz
-    sudo cp age/age /usr/local/bin
-    sudo chmod +x /usr/local/bin/age
-    sudo chown root:root /usr/local/bin/age
-    rm -rf age*
-fi
-{{ end }}
-
 if [ ! -f "${HOME}/key.txt" ]; then
     age --decrypt --output "${HOME}/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
     chmod 600 "${HOME}/key.txt"
