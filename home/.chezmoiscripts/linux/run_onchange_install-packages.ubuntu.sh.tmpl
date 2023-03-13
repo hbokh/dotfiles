@@ -1,5 +1,4 @@
-{{- if hasKey .chezmoi.osRelease "id" -}}
-{{- if eq .chezmoi.osRelease.id "ubuntu" -}}
+{{ if eq .osid "linux-ubuntu" -}}
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -10,5 +9,4 @@ sudo apt-get install -y apt-transport-https
 sudo apt-get update
 cat {{ .chezmoi.sourceDir }}/packages/Aptfile | xargs sudo apt-get install -y
 
-{{- end -}}
-{{- end }}
+{{ end -}}

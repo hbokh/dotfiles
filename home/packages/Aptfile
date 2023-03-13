@@ -8,4 +8,5 @@ jq
 python3-venv
 ufw
 unp
+virtualenvwrapper
 zsh
