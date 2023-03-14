@@ -10,6 +10,12 @@
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
@@ -18,6 +24,28 @@
 {{-     $hostname = "henks-mbp" -}}
 {{-   else -}}
 {{-     $hostname = $computerName -}}
+{{-   end -}}
+{{- end -}}
+
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "dc2" -}}
+{{-     $docker = true -}}
+{{-   else if eq $hostname "rpi4" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "henks-mbp" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "Henks-MBP-2" -}}
+{{-     $personal = true -}}
+{{-   else if stdinIsATTY -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{-     if not $ephemeral -}}
+{{-       $docker = promptBoolOnce . "docker" "docker" -}}
+{{-     end -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
 {{-   end -}}
 {{- end -}}
 

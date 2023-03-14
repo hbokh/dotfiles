@@ -1,12 +1,12 @@
 # http://docs.rubygems.org/read/chapter/11
---- 
+---
 install: --no-ri --no-rdoc
 update: --no-ri --no-rdoc
 # gem: --no-document
 benchmark: false
 verbose: true
 update_sources: true
-sources: 
+sources:
 - https://rubygems.org/
 - http://gems.rubyforge.org/
 backtrace: true

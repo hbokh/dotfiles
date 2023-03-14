@@ -1,9 +1,0 @@
-{{ if eq .osid "linux-centos" -}}
-#!/usr/bin/env bash
-
-set -eufo pipefail
-
-cd {{ .chezmoi.homeDir }}
-git clone https://github.com/ohmyzsh/ohmyzsh.git .oh-my-zsh/
-
-{{ end -}}
