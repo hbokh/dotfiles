@@ -1,13 +1,13 @@
 {{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
 
 {{ $packages := list
-     "curl"
+     "bat"
      "direnv"
      "fd-find"
      "git-lfs"
      "jq"
-     "vim"
      "silversearcher-ag"
+     "vim"
      "virtualenvwrapper"
      "zsh" -}}
 {{ $classicSnaps := list -}}
@@ -26,7 +26,7 @@
 {{   $sudo = "" -}}
 {{ end -}}
 
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eufo pipefail
 
