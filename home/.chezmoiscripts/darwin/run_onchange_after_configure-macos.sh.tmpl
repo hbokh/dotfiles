@@ -29,7 +29,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Set Zsh as default shell
 if [ "$SHELL" != "/usr/local/bin/zsh" ]
 then
-  chsh -s /usr/local/bin/zsh hbokh
+  chsh -s /usr/local/bin/zsh {{ .chezmoi.username }}
 fi
 
 {{ end -}}

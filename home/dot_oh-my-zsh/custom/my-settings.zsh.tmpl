@@ -8,6 +8,7 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export TERM=xterm-256color
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export EDITOR=vim
 
 # History  ############################################################
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
@@ -31,8 +32,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Ansible #############################################################
 export ANSIBLE_NOCOWS=1
 
-{{ if eq .chezmoi.os "darwin" -}}
-
+{{- if eq .chezmoi.os "darwin" }}
 # Homebrew ############################################################
 export HOMEBREW_GITHUB_API_TOKEN={{ gopass "tokens/GH_pat" }}         # This token expires on Sun, Nov 26 2023.
 export HOMEBREW_TEMP="/usr/local/tmp"
@@ -61,8 +61,7 @@ export PATH="/usr/local/opt/python@3/bin:$PATH"
 
 # OpenSSL #############################################################
 export PATH="/usr/local/opt/openssl@3/bin:$PATH"
-
-{{ end -}}
+{{- end }}
 
 # Kubernetes ##########################################################
 export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/k3s.yaml
