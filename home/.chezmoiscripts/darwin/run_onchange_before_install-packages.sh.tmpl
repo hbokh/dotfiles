@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+     "age"
+     "bat"
+     "curl"
+     "git"
+     "gopass"
+     "jq"
+     "pinentry-mac"
+     "wget"
+     "xz"
+     "yt-dlp" -}}
+{{ $casks := list
+     "font-hack-nerd-font"
+     "rar" -}}
+
+{{ if eq .chezmoi.arch "amd64" -}}
+{{   $brews = concat $brews (list
+       "shellcheck") -}}
+{{   $casks = concat $casks (list
+       "virtualbox"
+       "virtualbox-extension-pack") -}}
+{{ end -}}
+
+{{ if .personal -}}
+{{   $brews = concat $brews (list
+       "kube-ps1"
+       "kubectx"
+       "kubernetes-cli") -}}
+{{   $casks = concat $casks (list
+       "aws-vault"
+       "rectangle") -}}
+{{ end -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
