@@ -44,8 +44,9 @@ export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION/libexec
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=~/develop/gocode
 
-# Virtual envs ########################################################
+# Python virtual envs #################################################
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 source virtualenvwrapper.sh
