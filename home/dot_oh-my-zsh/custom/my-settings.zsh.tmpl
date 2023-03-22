@@ -65,7 +65,7 @@ export PATH="/usr/local/opt/openssl@3/bin:$PATH"
 {{- end }}
 
 # Kubernetes ##########################################################
-export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/k3s.yaml
+export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
 export KUBE_EDITOR="code -w"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source <(kubectl completion zsh)
