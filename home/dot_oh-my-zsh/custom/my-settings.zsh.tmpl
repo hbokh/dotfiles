@@ -1,8 +1,8 @@
 # Env #################################################################
 export GREP_COLOR='1;37;41'
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=$HOMEBREW_PREFIX/bin:/usr/bin:/bin:$HOMEBREW_PREFIX/sbin:/usr/sbin:/sbin
 export PATH=$HOME/bin:$PATH
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export TERM=xterm-256color
@@ -34,8 +34,9 @@ export ANSIBLE_NOCOWS=1
 
 {{- if eq .chezmoi.os "darwin" }}
 # Homebrew ############################################################
+eval "{{- .homebrew.prefix -}}/bin/brew shellenv"
 export HOMEBREW_GITHUB_API_TOKEN={{ gopass "tokens/GH_pat" }}         # This token expires on Sun, Nov 26 2023.
-export HOMEBREW_TEMP="/usr/local/tmp"
+export HOMEBREW_TEMP="$HOMEBREW_PREFIX/tmp"
 export HOMEBREW_NO_ANALYTICS=1
 
 # Go ##################################################################
@@ -45,23 +46,23 @@ export PATH=$PATH:$GOROOT/bin
 export GOPATH=~/develop/gocode
 
 # Python virtual envs #################################################
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$HOMEBREW_PREFIX/bin/python3
 export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 source virtualenvwrapper.sh
 
 # Ruby, Gems, RVM #####################################################
-export PATH=/usr/local/lib/ruby/gems/3.2.0/bin:/usr/local/opt/ruby/bin:$PATH
+export PATH=$HOMEBREW_PREFIX/lib/ruby/gems/3.2.0/bin:$HOMEBREW_PREFIX/opt/ruby/bin:$PATH
 
 # coreutils ###########################################################
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 
 # Python 3 ############################################################
-export PATH="/usr/local/opt/python@3/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/python@3/bin:$PATH"
 
 # OpenSSL #############################################################
-export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
 {{- end }}
 
 # Kubernetes ##########################################################
