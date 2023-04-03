@@ -1,8 +1,6 @@
 # Env #################################################################
 export GREP_COLOR='1;37;41'
-export PATH=$HOMEBREW_PREFIX/bin:/usr/bin:/bin:$HOMEBREW_PREFIX/sbin:/usr/sbin:/sbin
 export PATH=$HOME/bin:$PATH
-export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export TERM=xterm-256color
@@ -32,9 +30,14 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Ansible #############################################################
 export ANSIBLE_NOCOWS=1
 
+{{- if eq .chezmoi.os "linux" }}
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+{{- end }}
+
 {{- if eq .chezmoi.os "darwin" }}
 # Homebrew ############################################################
-eval "{{- .homebrew.prefix -}}/bin/brew shellenv"
+export PATH=$HOMEBREW_PREFIX/bin:/usr/bin:/bin:$HOMEBREW_PREFIX/sbin:/usr/sbin:/sbin
+export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 export HOMEBREW_GITHUB_API_TOKEN={{ gopass "tokens/GH_pat" }}         # This token expires on Sun, Nov 26 2023.
 export HOMEBREW_TEMP="$HOMEBREW_PREFIX/tmp"
 export HOMEBREW_NO_ANALYTICS=1
