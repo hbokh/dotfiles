@@ -1,5 +1,5 @@
 no-grab
 default-cache-ttl 1800
 {{- if eq .chezmoi.os "darwin" }}
-pinentry-program $HOMEBREW_PREFIX/bin/pinentry-mac
+pinentry-program {{ .homebrew.prefix }}/bin/pinentry-mac
 {{- end }}
