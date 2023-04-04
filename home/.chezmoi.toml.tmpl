@@ -60,6 +60,15 @@
     personal = {{ $personal }}
     osid = {{ $osID | quote }}
 
+{{ if eq .chezmoi.os "darwin" -}}
+[data.homebrew]
+    {{ if eq .chezmoi.arch "arm64" -}}
+    prefix = "/opt/homebrew"
+    {{- else -}}
+    prefix = "/usr/local"
+    {{- end -}}
+{{- end }}
+
 encryption = "age"
 [age]
     identity = "~/key.txt"
