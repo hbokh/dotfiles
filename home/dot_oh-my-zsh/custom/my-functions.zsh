@@ -31,3 +31,8 @@ function lctl {
         echo "either command not specified or plist file is not defined"
     fi
 }
+
+# https://www.reddit.com/r/MacOS/comments/zq36l1/whats_up_with_mdfind_warning_on_console/
+function mdfind() {
+    /usr/bin/mdfind $@ 2> >(grep --invert-match ' \[UserQueryParser\] ' >&2)
+}
