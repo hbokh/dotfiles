@@ -8,3 +8,4 @@ TEMP_*
 .srvr*
 .*.sw[op]
 .vscode
+.gitlab-ci-local*
