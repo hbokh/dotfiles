@@ -6,6 +6,7 @@ brew tap homebrew/cask-fonts
 
 {{ $brews := list
      "age"
+     "aws-vault"
      "bat"
      "curl"
      "diff-so-fancy"
@@ -37,7 +38,6 @@ brew tap homebrew/cask-fonts
        "kubectx"
        "kubernetes-cli") -}}
 {{   $casks = concat $casks (list
-       "aws-vault"
        "rectangle") -}}
 {{ end -}}
 
