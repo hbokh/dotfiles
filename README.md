@@ -5,5 +5,3 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/hbokh/dotfiles?style=for-the-badge)](https://github.com/hbokh/dotfiles/commits/main)
 
 Managed with <https://github.com/twpayne/chezmoi>.
-
-**NOTE:** Make sure packages `git` and `age` are pre-installed!
