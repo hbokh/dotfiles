@@ -4,9 +4,9 @@
 set -eufo pipefail
 
 if command -v apt-get >/dev/null; then
-  sudo apt install age git -y
+  sudo apt install age git unzip -y
 elif command -v yum >/dev/null; then
-  sudo yum -y install git
+  sudo yum -q -y install git unzip util-linux-user
 else
   echo "Is this a Linux distro..?"
 fi
