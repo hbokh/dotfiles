@@ -1,0 +1,14 @@
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-centos" -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+if command -v apt-get >/dev/null; then
+  sudo apt install age git -y
+elif command -v yum >/dev/null; then
+  sudo yum -y install git
+else
+  echo "Is this a Linux distro..?"
+fi
+
+{{ end -}}
