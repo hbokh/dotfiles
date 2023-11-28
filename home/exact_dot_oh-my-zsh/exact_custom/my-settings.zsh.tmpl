@@ -74,7 +74,6 @@ source <(kubectl completion zsh)
 # Python virtual envs #################################################
 export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
 source virtualenvwrapper.sh
 
 # ZSH-related #########################################################
@@ -91,6 +90,7 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # Other ###############################################################
+export PROJECT_HOME=$HOME/Projects
 #export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DIRENV_WARN_TIMEOUT=60s
 export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"

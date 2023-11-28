@@ -1,7 +1,6 @@
 {{ if eq .chezmoi.os "darwin" -}}
 alias brall='brew -v update && brew upgrade && brew cleanup --prune=all ; /bin/rm -rf ~/Library/Caches/Homebrew/*'
 alias v='lsd -altrF'
-alias cat='bat'
 
 # Suffix aliases
 alias -s {yml,json,md}=code
@@ -18,6 +17,7 @@ esac
 alias v='ls -altrF --color'
 {{ end -}}
 
+alias cat='bat'
 alias dmesg='sudo dmesg'
 alias vm='ssh vagrant@127.0.0.1 -p 2222'
 alias vssh='vagrant ssh'
