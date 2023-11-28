@@ -66,12 +66,14 @@ export PATH="$HOMEBREW_PREFIX/opt/python@3/bin:$PATH"
 
 # OpenSSL #############################################################
 export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
-{{- end }}
 
 # Kubernetes ##########################################################
-export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
 export KUBE_EDITOR="code -w"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+{{- end }}
+
+# More Kubernetes #####################################################
+export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
 source <(kubectl completion zsh)
 
 # ZSH-related #########################################################
@@ -88,6 +90,6 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # Other ###############################################################
-# export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
+#export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DIRENV_WARN_TIMEOUT=60s
 export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
