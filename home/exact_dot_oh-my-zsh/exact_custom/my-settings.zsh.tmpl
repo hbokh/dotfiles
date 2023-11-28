@@ -33,6 +33,7 @@ export ANSIBLE_NOCOWS=1
 
 {{- if eq .chezmoi.os "linux" }}
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
@@ -48,13 +49,6 @@ export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION/libexec
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=~/develop/gocode
 
-# Python virtual envs #################################################
-export VIRTUALENVWRAPPER_PYTHON=$HOMEBREW_PREFIX/bin/python3
-export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-source virtualenvwrapper.sh
-
 # Ruby, Gems, RVM #####################################################
 export PATH=$HOMEBREW_PREFIX/lib/ruby/gems/3.2.0/bin:$HOMEBREW_PREFIX/opt/ruby/bin:$PATH
 
@@ -62,6 +56,7 @@ export PATH=$HOMEBREW_PREFIX/lib/ruby/gems/3.2.0/bin:$HOMEBREW_PREFIX/opt/ruby/b
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 
 # Python 3 ############################################################
+export VIRTUALENVWRAPPER_PYTHON=$HOMEBREW_PREFIX/bin/python3
 export PATH="$HOMEBREW_PREFIX/opt/python@3/bin:$PATH"
 
 # OpenSSL #############################################################
@@ -75,6 +70,12 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # More Kubernetes #####################################################
 export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
 source <(kubectl completion zsh)
+
+# Python virtual envs #################################################
+export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+source virtualenvwrapper.sh
 
 # ZSH-related #########################################################
 unsetopt nomatch
