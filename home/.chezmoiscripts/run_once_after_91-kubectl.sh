@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eufo pipefail
 
-# Detect OS
 os=$(uname)
 case $os in
     Darwin)
-    brew install kubectl
+    brew install kubernetes-cli
     ;;
 
     Linux)
