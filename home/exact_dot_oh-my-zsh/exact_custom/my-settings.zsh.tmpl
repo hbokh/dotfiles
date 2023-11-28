@@ -32,7 +32,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 export ANSIBLE_NOCOWS=1
 
 {{- if eq .chezmoi.os "linux" }}
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
@@ -88,8 +88,6 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # Other ###############################################################
-export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
+# export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DIRENV_WARN_TIMEOUT=60s
-
-# Pipx ################################################################
 export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
