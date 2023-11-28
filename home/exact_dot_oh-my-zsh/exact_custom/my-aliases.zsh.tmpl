@@ -17,7 +17,11 @@ esac
 alias v='ls -altrF --color'
 {{ end -}}
 
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
+alias cat='batcat'
+{{ else }}
 alias cat='bat'
+{{ end -}}
 alias dmesg='sudo dmesg'
 alias vm='ssh vagrant@127.0.0.1 -p 2222'
 alias vssh='vagrant ssh'
