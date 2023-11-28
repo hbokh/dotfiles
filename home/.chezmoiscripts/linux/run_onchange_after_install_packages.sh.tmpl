@@ -3,5 +3,5 @@
 
 set -eufo pipefail
 
-chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh {{ .chezmoi.username }}
 {{ end -}}
