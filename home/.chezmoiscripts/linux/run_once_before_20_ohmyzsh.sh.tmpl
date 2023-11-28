@@ -4,6 +4,7 @@
 set -eufo pipefail
 
 cd {{ .chezmoi.homeDir }}
+rm -rf ~/.oh-my-zsh/
 git clone https://github.com/ohmyzsh/ohmyzsh.git .oh-my-zsh/
 
 {{ end -}}
