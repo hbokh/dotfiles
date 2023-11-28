@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-centos" "linux-rocky" -}}
+{{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
 
 set -eufo pipefail
@@ -8,7 +8,7 @@ if command -v apt-get >/dev/null; then
 elif command -v yum >/dev/null; then
   sudo yum -q -y install git python3 python3-pip unzip util-linux-user wget
 else
-  echo "Is this a Linux distro?"
+  echo "This is not an apt or rpm based Linux system ..."
 fi
 
 {{ end -}}
