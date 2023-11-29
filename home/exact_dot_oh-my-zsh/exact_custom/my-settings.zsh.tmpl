@@ -31,10 +31,10 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Ansible #############################################################
 export ANSIBLE_NOCOWS=1
 
-{{- if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" }}
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-{{- end }}
+{{ end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 # Homebrew ############################################################
@@ -74,11 +74,11 @@ source <(kubectl completion zsh)
 # Python virtual envs #################################################
 export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
-{{- if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-{{ else }}
+{{ else -}}
 source virtualenvwrapper.sh
-{{ end -}}
+{{ end }}
 
 # ZSH-related #########################################################
 unsetopt nomatch
