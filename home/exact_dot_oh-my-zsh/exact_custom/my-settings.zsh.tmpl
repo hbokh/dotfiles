@@ -93,4 +93,4 @@ bindkey "^[e" end-of-line
 export PROJECT_HOME=$HOME/Projects
 #export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DIRENV_WARN_TIMEOUT=60s
-export PATH="$PATH:{{ .chezmoi.homeDir }}/.local/bin"
+export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH:"
