@@ -14,6 +14,8 @@
 # 	task
 # fi
 
+{{ if eq .chezmoi.os "darwin" -}}
+
 {{ if stat "/opt/homebrew/bin/brew" -}}
 fpath+=("$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions")
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -24,3 +26,5 @@ eval "$(/usr/local/bin/brew shellenv)"
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+{{- end }}
