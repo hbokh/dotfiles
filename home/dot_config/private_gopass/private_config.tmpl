@@ -1,13 +1,15 @@
 [core]
-  autoimport = true
-  exportkeys = true
-  autoclip = false
-  parsing = true
-  showsafecontent = false
-  notifications = true
-  nopager = false
-  cliptimeout = 45
+	autoimport = true
+	exportkeys = true
+	parsing = true
+	notifications = true
+	nopager = false
+	cliptimeout = 45
 [mounts]
-  path = {{ .chezmoi.homeDir }}/.local/share/gopass/stores/root
+	path = {{ .chezmoi.homeDir }}/.local/share/gopass/stores/root
 [age]
-  usekeychain = false
+	usekeychain = false
+[show]
+	safecontent = false
+[generate]
+	autoclip = false
