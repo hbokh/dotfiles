@@ -25,3 +25,9 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+{{- if and (eq .chezmoi.os "darwin") .personal (not .ephemeral) }}
+[".oh-my-zsh/custom/plugins/orb/orb.plugin.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/orbstack/orbstack/main/orb.plugin.zsh"
+    refreshPeriod = "168h"
+{{- end }}
