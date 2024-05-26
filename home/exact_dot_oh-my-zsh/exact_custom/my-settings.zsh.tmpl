@@ -62,6 +62,9 @@ export PATH="$HOMEBREW_PREFIX/opt/python@3/bin:$PATH"
 # OpenSSL #############################################################
 export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
 
+# Other ###############################################################
+export DYLD_LIBRARY_PATH=`brew --prefix molten-vk`/lib
+
 # Kubernetes ##########################################################
 export KUBE_EDITOR="code -w"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
