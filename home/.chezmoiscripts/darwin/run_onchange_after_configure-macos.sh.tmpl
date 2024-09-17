@@ -29,6 +29,9 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Disable .DS_Store files being created on USB volumes
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
 # Set Zsh as default shell
 {{ if (eq .chezmoi.arch "amd64") -}}
 if [ "$SHELL" != "/usr/local/bin/zsh" ]
