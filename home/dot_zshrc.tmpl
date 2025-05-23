@@ -107,6 +107,12 @@ plugins+=(vagrant terraform) # Hashicorp
 
 # User configuration
 
+# ssh-agent
+zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
+
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
