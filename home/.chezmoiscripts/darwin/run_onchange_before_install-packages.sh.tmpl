@@ -25,8 +25,7 @@ set -eufo pipefail
      "zsh" -}}
 {{ $casks := list
      "font-hack-nerd-font"
-     "rar"
-     "visual-studio-code" -}}
+     "rar" -}}
 
 {{ if eq .chezmoi.arch "amd64" -}}
 {{   $brews = concat $brews (list
