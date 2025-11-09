@@ -33,11 +33,7 @@
 {{-   else if eq $hostname "rpi4" -}}
 {{-     $headless = true -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "Henks-MacBook-Pro" -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "Henks-MacBook-Air" -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "Henks-MBP-3" -}}
+{{-   else if eq $osID "darwin" -}}
 {{-     $personal = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
@@ -70,3 +66,6 @@
     prefix = "/usr/local"
     {{- end -}}
 {{- end }}
+
+[diff]
+    pager = "diff-so-fancy"
