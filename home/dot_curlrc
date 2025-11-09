@@ -1,0 +1,5 @@
+connect-timeout = 5
+location
+progress-bar
+show-error
+user-agent = "Mozilla/5.0 Gecko"
