@@ -99,3 +99,4 @@ export PATH="{{ .chezmoi.homeDir }}/bin:{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 source <(chezmoi completion zsh)
 export LS_COLORS="$(vivid generate molokai)"
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
