@@ -1,0 +1,27 @@
+---
+version: 2
+locations:
+  documents:
+    from: Documents
+    to: bsd002
+    cron: '0 3 * * *'  # Daily at 3:00
+    options:
+      backup:
+        exclude:
+          - '.git'
+          - '.DS_Store'
+          - '.localized'
+      forget:
+        keep-last: 2       # always keep at least 2 snapshots
+        keep-hourly: 1     # keep x last hourly shapshots
+        keep-daily: 1      # keep x last daily shapshots
+        keep-weekly: 1     # keep x last weekly shapshots
+        keep-monthly: 12   # keep x last monthly shapshots
+        keep-yearly: 7     # keep x last yearly shapshots
+        # keep-within: '1w'  # keep snapshots from the last week
+backends:
+  bsd002:
+    type: rest
+    path: 'http://bsd002.internal:8000'
+    key: >-
+      {{ gopass "FreeBSD/rest-key" }}
