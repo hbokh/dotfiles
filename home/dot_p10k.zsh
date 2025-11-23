@@ -361,6 +361,9 @@
   typeset -g POWERLEVEL9K_VCS_STASH_ICON='≡'
   typeset -g POWERLEVEL9K_VCS_TAG_ICON=' \uF02B'
 
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+
   # Formatter for Git status.
   #
   # Example output: master wip ⇣42⇡42 *42 merge ~42 +42 !42 ?42.
