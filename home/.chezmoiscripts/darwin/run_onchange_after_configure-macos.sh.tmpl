@@ -41,9 +41,9 @@ fi
 {{ end }}
 
 {{ if (eq .chezmoi.arch "arm") -}}
-if [ "$SHELL" != "/opt/homebrew/bin/zsh" ]
+if [ "$SHELL" != "/bin/zsh" ]
 then
-  chsh -s /opt/homebrew/bin/zsh {{ .chezmoi.username }}
+  chsh -s /bin/zsh {{ .chezmoi.username }}
 fi
 {{ end }}
 
