@@ -1,8 +1,9 @@
+{{ if eq .chezmoi.os "darwin" -}}
 ---
 version: 2
 locations:
   documents:
-    from: Documents
+    from: {{ .chezmoi.homeDir }}/Documents
     to: bsd002
     cron: '0 3 * * *'  # Daily at 3:00
     options:
@@ -25,3 +26,4 @@ backends:
     path: 'http://bsd002.internal:8000'
     key: >-
       {{ gopass "FreeBSD/rest-key" }}
+{{- end }}
