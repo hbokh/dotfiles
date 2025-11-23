@@ -1,33 +1,57 @@
+{{ if not .ephemeral }}
+
 [".vim/autoload/plug.vim"]
     type = "file"
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     refreshPeriod = "168h"
+
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh/custom/themes/powerlevel10k"]
-    type = "archive"
-    url = "https://github.com/romkatv/powerlevel10k/archive/v1.20.0.tar.gz"
-    exact = true
-    stripComponents = 1
+    exclude = [
+        "*/.*",
+        "*/templates",
+        "*/themes",
+    ]
+
 [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+    exclude = [
+        "*/.editorconfig",
+        "*/.gitattributes",
+        "*/.github",
+        "*/.gitignore",
+    ]
+
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/v1.20.0.tar.gz"
+    exact = true
+    stripComponents = 1
+    exclude = [
+        "*/.gitattributes",
+        "*/.gitignore",
+    ]
+
 {{- if and (eq .chezmoi.os "darwin") .personal (not .ephemeral) }}
 [".oh-my-zsh/custom/plugins/orb/orb.plugin.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/orbstack/orbstack/main/orb.plugin.zsh"
     refreshPeriod = "168h"
 {{- end }}
+
+{{ end }}
