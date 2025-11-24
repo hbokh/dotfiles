@@ -3,6 +3,7 @@
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
 {{- "" -}}
 
 {{- $osID := .chezmoi.os -}}
@@ -33,6 +34,9 @@
 {{-   else if eq $hostname "rpi4" -}}
 {{-     $headless = true -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "MAC-M2L06QJXF4" -}}
+{{-     $work = true -}}
+{{-     $personal = true -}}
 {{-   else if eq $osID "darwin" -}}
 {{-     $personal = true -}}
 {{-   else if stdinIsATTY -}}
@@ -48,11 +52,15 @@
 {{- end -}}
 
 {{- $email := "hbokhoven@gmail.com" -}}
+{{- if $work -}}
+{{-   $email = "henk.bokhoven@voys.nl" -}}
+{{- end -}}
 
 [data]
     docker = {{ $docker }}
     ephemeral = {{ $ephemeral }}
     email = {{ $email | quote }}
+    work = {{ $work }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
