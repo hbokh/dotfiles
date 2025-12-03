@@ -79,8 +79,10 @@ plugins+=(vagrant terraform)  # Hashicorp
 
 source $ZSH/oh-my-zsh.sh
 
+ZSH_COMPDUMP=$ZSH_CACHE_DIR/.zcompdump-$HOST
+
 # Initialize completion system AFTER Oh My Zsh
-autoload -Uz compinit && compinit -i
+autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
 # User configuration
 
