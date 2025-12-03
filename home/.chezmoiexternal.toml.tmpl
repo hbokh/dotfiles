@@ -47,11 +47,23 @@
         "*/.gitignore",
     ]
 
-{{- if and (eq .chezmoi.os "darwin") .personal (not .ephemeral) }}
+{{ if eq .chezmoi.os "darwin" -}}
 [".oh-my-zsh/custom/plugins/orb/orb.plugin.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/orbstack/orbstack/main/orb.plugin.zsh"
     refreshPeriod = "168h"
+
+{{-  range (list
+       "pkg-file-info"
+       "pkg-list"
+       "pkg-list-files") }}
+[".local/bin/{{ . }}"]
+    type = "file"
+    url = "https://github.com/afedotov/macos-pkgutil-wrappers/raw/main/bin/{{ . }}"
+    refreshPeriod = "168h"
+    executable = true
+{{-  end }}
+
 {{- end }}
 
 {{ end }}
