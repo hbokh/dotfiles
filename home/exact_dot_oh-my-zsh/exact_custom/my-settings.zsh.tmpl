@@ -3,6 +3,7 @@ export GREP_COLOR='1;37;41'      # BSD grep
 export GREP_COLORS='mt=1;37;41'  # GNU grep
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export LS_COLORS="$(vivid generate molokai)"
 export TERM=xterm-256color
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -30,12 +31,12 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Ansible #############################################################
 export ANSIBLE_NOCOWS=1
 
-{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" -}}
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-{{ end }}
+{{ end -}}
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" -}}
 # Homebrew ############################################################
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 export HOMEBREW_TEMP="$HOMEBREW_PREFIX/tmp"
@@ -63,7 +64,7 @@ export DYLD_LIBRARY_PATH=`brew --prefix molten-vk`/lib
 # Kubernetes ##########################################################
 export KUBE_EDITOR="code -w"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-{{- end }}
+{{ end -}}
 
 # More Kubernetes #####################################################
 export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
@@ -92,11 +93,11 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # Other ###############################################################
+export GITHUB_USERNAME=hbokh
 export PROJECT_HOME=$HOME/Projects
 export DIRENV_WARN_TIMEOUT=60s
 export PATH="{{ .chezmoi.homeDir }}/bin:{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 #export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export RIPGREP_CONFIG_PATH=~$XDG_CONFIG_HOME/ripgrep/config
 source <(chezmoi completion zsh)
-export LS_COLORS="$(vivid generate molokai)"
-export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config

@@ -52,19 +52,28 @@
 {{- end -}}
 
 {{- $email := "hbokhoven+github@gmail.com" -}}
+{{- $name := "Henk" -}}
+{{- $signingkey := "0A060AD10B455639" -}}
 {{- if $work -}}
-{{-   $email = "henk.bokhoven@voys.nl" -}}
+  {{- $email = "henk.bokhoven@voys.nl" -}}
+  {{- $name = "Henk Bokhoven" }}
+  {{- $signingkey = "9F7C5A39312620F5" -}}
 {{- end -}}
 
 [data]
     docker = {{ $docker }}
-    ephemeral = {{ $ephemeral }}
     email = {{ $email | quote }}
-    work = {{ $work }}
+    ephemeral = {{ $ephemeral }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
-    personal = {{ $personal }}
+    name = {{ $name | quote }}
     osid = {{ $osID | quote }}
+    personal = {{ $personal }}
+    work = {{ $work }}
+
+[data.github]
+    user = "hbokh"
+    signingkey = {{ $signingkey | quote }}
 
 {{ if eq .chezmoi.os "darwin" -}}
 [data.homebrew]

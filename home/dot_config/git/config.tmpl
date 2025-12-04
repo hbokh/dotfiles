@@ -1,6 +1,6 @@
 [user]
-  name = Henk
-  signingkey = 0A060AD10B455639
+  name = {{ .name }}
+  signingkey = {{ .github.signingkey }}
   email = {{ .email }}
 
 [alias]
@@ -53,6 +53,10 @@
 
 [fetch]
   prune = true
+
+[github]
+  user = {{ .github.user | quote }}
+  token = {{ keyring "github" .github.user | quote }}
 
 [gpg]
   program = gpg
