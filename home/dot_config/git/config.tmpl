@@ -1,0 +1,70 @@
+[user]
+  name = Henk
+  signingkey = 0A060AD10B455639
+  email = {{ .email }}
+
+[alias]
+  a = !git --no-pager la -n 15
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
+  br = branch
+  ci = commit
+  cl = clone
+  co = checkout
+  cp = cherry-pick
+  dc = diff --cached
+  diff = diff --word-diff
+  ds = diff --staged  # git ds - diff your staged changes == review before committing.
+  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+  h = !git --no-pager log --graph -n 15
+  l = log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%aN%C(reset)%C(bold yellow)%d %C(reset)%s'
+  la = !git lh --date-order --all 2> /dev/null
+  lb = log --graph --simplify-by-decoration
+  lba = !git lb --all
+  lh = log --graph
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  sa = stash apply
+  sl = stash list
+  ss = stash save
+  st = status -sb  # smarter status - include tag and branch info
+  up = pull --rebase --autostash
+  wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[color]
+  ui = auto
+
+[commit]
+  gpgsign = true
+
+[core]
+  quotepath = false
+  editor = vim
+
+[fetch]
+  prune = true
+
+[gpg]
+  program = gpg
+
+[help]
+  autocorrect = 1
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
