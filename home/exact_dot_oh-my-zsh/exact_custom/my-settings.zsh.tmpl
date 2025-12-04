@@ -99,5 +99,5 @@ export DIRENV_WARN_TIMEOUT=60s
 export PATH="{{ .chezmoi.homeDir }}/bin:{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 #export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-export RIPGREP_CONFIG_PATH=~$XDG_CONFIG_HOME/ripgrep/config
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 source <(chezmoi completion zsh)
