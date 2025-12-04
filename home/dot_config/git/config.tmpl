@@ -54,10 +54,6 @@
 [fetch]
   prune = true
 
-[github]
-  user = {{ .github.user | quote }}
-  token = {{ keyring "github" .github.user | quote }}
-
 [gpg]
   program = gpg
 
