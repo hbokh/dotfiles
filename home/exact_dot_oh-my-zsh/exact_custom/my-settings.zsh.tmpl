@@ -80,6 +80,7 @@ source virtualenvwrapper.sh
 {{ end }}
 
 # ZSH-related #########################################################
+export ZSH_COMPDUMP=$ZSH_CACHE_DIR/.zcompdump-$HOST
 unsetopt nomatch
 # Fish shell-like syntax highlighting for Zsh
 source "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
