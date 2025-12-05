@@ -15,7 +15,7 @@ README.md
 .local/share/fonts
 {{ end }}
 
-{{ if not .personal }}
+{{ if ne .chezmoi.hostname "Henks-MBP-3" }}
 .config/autorestic
 .config/autorestic/**
 {{ end }}
