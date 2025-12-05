@@ -10,7 +10,8 @@
 
 # Disable zsh session folder completely - https://superuser.com/a/1610999/74190
 export SHELL_SESSIONS_DISABLE=1
-export ZSH_COMPDUMP="${ZSH_CACHE_DIR=:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+export ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+export ZSH_COMPDUMP="${ZSH_CACHE_DIR=:-$HOME}/.zcompdump-${HOST}-${ZSH_VERSION}"
 
 {{ if eq .chezmoi.os "darwin" -}}
 
