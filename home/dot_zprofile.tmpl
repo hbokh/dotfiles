@@ -8,6 +8,8 @@
 # 3. `$ZDOTDIR/.zshrc`:    Run for interactive shells.`
 # 4. `$ZDOTDIR/.zlogin`:   Run for login shells (**after** .zshrc)
 
+# Disable zsh session folder completely - https://superuser.com/a/1610999/74190
+export SHELL_SESSIONS_DISABLE=1
 export ZSH_COMPDUMP="${ZSH_CACHE_DIR=:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
 {{ if eq .chezmoi.os "darwin" -}}
