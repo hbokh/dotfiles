@@ -1,1 +1,2 @@
 typeset -U PATH
+typeset -U fpath
