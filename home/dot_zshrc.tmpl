@@ -77,18 +77,19 @@ plugins+=(vagrant terraform)  # Hashicorp
 [[ "$(uname)" == "Darwin" ]] && plugins+=(macos iterm2 orb)  # macOS
 [[ "$(uname)" == "Linux" ]] && plugins+=(docker)
 
+# ssh-agent
+# IMPORTANT: put these settings before the line that sources oh-my-zsh
+zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
+
 source $ZSH/oh-my-zsh.sh
 
 # Initialize completion system AFTER Oh My Zsh
 autoload -Uz compinit zrecompile && compinit -i -d $ZSH_COMPDUMP
 
 # User configuration
-
-# ssh-agent
-zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
