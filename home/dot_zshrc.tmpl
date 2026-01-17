@@ -46,7 +46,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -72,17 +72,15 @@ plugins=()
 plugins+=(gitfast z zsh-autosuggestions)
 plugins+=(ssh-agent direnv gpg-agent rbenv)
 plugins+=(virtualenv virtualenvwrapper)  # Python
-plugins+=(docker-compose)
-plugins+=(vagrant terraform)  # Hashicorp
+plugins+=(docker-compose terraform)
 [[ "$(uname)" == "Darwin" ]] && plugins+=(macos iterm2 orb)  # macOS
 [[ "$(uname)" == "Linux" ]] && plugins+=(docker)
 
-# ssh-agent
 # IMPORTANT: put these settings before the line that sources oh-my-zsh
 zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
 
 source $ZSH/oh-my-zsh.sh
 
