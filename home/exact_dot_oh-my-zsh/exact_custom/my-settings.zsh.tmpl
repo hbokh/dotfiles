@@ -66,12 +66,12 @@ export DYLD_LIBRARY_PATH=`brew --prefix molten-vk`/lib
 
 # Kubernetes ##########################################################
 export KUBE_EDITOR="code -w"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+#export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 {{ end -}}
 
 # More Kubernetes #####################################################
-export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
-source <(kubectl completion zsh)
+#export KUBECONFIG={{ .chezmoi.homeDir }}/.kube/default.yaml
+#source <(kubectl completion zsh)
 
 # Python virtual envs #################################################
 export VIRTUAL_ENV_HOME=$HOME/.virtualenvs
